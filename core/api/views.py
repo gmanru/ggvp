@@ -18,7 +18,7 @@ from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
 from core.models import Item, OrderItem, Order,Playlist
 from .serializers import (
     ItemSerializer, OrderSerializer, ItemDetailSerializer, AddressSerializer,
-    PaymentSerializer, UserDetailsSerializer, SocialAccountSerializer,PlaylistSerializer,
+    PaymentSerializer, UserDetailsSerializer, SocialAccountSerializer,PlaylistSerializer,PlaylistShortSerializer,
 )
 from rest_framework.viewsets import ModelViewSet
 #from .serializers import PlaylistSerializer
@@ -327,3 +327,11 @@ class PaymentListView(ListAPIView):
 class PlaylistViewSet(ModelViewSet):
     queryset = Playlist.objects.all()
     serializer_class = PlaylistSerializer
+
+class PlaylistViewSet(ModelViewSet):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistSerializer
+
+class PlaylistShortViewSet(ModelViewSet):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistShortSerializer

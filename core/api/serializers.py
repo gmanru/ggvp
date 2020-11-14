@@ -228,4 +228,12 @@ class PlaylistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Playlist
         fields = 'id','date','num_hour','track','artist','lenght','start','end'
-        view_name = 'student'
+        #view_name = 'student'
+
+
+class PlaylistShortSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Playlist
+        fields = 'track','artist'
+        #view_name = 'student'

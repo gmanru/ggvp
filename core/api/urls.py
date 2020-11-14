@@ -17,13 +17,16 @@ from .views import (
     PaymentListView,
     UserDetailsView,
     PlaylistViewSet,
+    PlaylistShortViewSet,
 )
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('playlist', PlaylistViewSet)
+router.register('andrew', PlaylistShortViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    #path('short-playlist/', PlaylistshortView.as_view(), name='userdetails'),
     path('user-id/', UserIDView.as_view(), name='user-id'),
     path('userdetails/', UserDetailsView.as_view(), name='userdetails'),
     path('countries/', CountryListView.as_view(), name='country-list'),
