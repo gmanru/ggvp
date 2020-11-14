@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import (
     ItemDetailView,
     CheckoutView,
@@ -9,12 +9,18 @@ from .views import (
     remove_single_item_from_cart,
     PaymentView,
     AddCouponView,
-    RequestRefundView
+    RequestRefundView,
+    PlaylistViewSet
 )
-
+#from rest_framework.routers import DefaultRouter
 app_name = 'core'
+#router = DefaultRouter()
+
+
+#router.register('playlist', PlaylistViewSet)
 
 urlpatterns = [
+    #path('playlist/', include(router.urls)),
     path('', HomeView.as_view(), name='home'),
     path('checkout/', CheckoutView.as_view(), name='checkout'),
     path('order-summary/', OrderSummaryView.as_view(), name='order-summary'),

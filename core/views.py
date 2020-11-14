@@ -8,8 +8,12 @@ from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
 from .forms import CheckoutForm, CouponForm, RefundForm, PaymentForm
-from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile
-
+from .models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile, Playlist
+from rest_framework import status
+from rest_framework.generics import get_object_or_404
+from rest_framework.views import APIView, Response
+from rest_framework.viewsets import ModelViewSet
+from .serializers import PlaylistSerializer
 import random
 import string
 import stripe
@@ -513,3 +517,7 @@ class RequestRefundView(View):
             except ObjectDoesNotExist:
                 messages.info(self.request, "This order does not exist.")
                 return redirect("core:request-refund")
+
+'''class PlaylistViewSet(ModelViewSet):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistSerializer'''

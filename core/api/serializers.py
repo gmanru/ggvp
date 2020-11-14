@@ -3,7 +3,7 @@ from django_countries.serializer_fields import CountryField
 from rest_framework import serializers
 from core.models import (
     Address, Item, Order, OrderItem, Coupon, Variation, ItemVariation,
-    Payment
+    Payment,Playlist
 )
 from allauth.socialaccount.models import SocialAccount
 
@@ -222,3 +222,10 @@ class PaymentSerializer(serializers.ModelSerializer):
             'amount',
             'timestamp'
         )
+
+class PlaylistSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Playlist
+        fields = 'id','date','num_hour','track','artist','lenght','start','end'
+        view_name = 'student'

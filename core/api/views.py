@@ -15,11 +15,13 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_200_OK, HTTP_400_BAD_REQUEST
-from core.models import Item, OrderItem, Order
+from core.models import Item, OrderItem, Order,Playlist
 from .serializers import (
     ItemSerializer, OrderSerializer, ItemDetailSerializer, AddressSerializer,
-    PaymentSerializer, UserDetailsSerializer, SocialAccountSerializer,
+    PaymentSerializer, UserDetailsSerializer, SocialAccountSerializer,PlaylistSerializer,
 )
+from rest_framework.viewsets import ModelViewSet
+#from .serializers import PlaylistSerializer
 from core.models import Item, OrderItem, Order, Address, Payment, Coupon, Refund, UserProfile, Variation, ItemVariation
 
 import stripe
@@ -320,3 +322,8 @@ class PaymentListView(ListAPIView):
 
     def get_queryset(self):
         return Payment.objects.filter(user=self.request.user)
+
+
+class PlaylistViewSet(ModelViewSet):
+    queryset = Playlist.objects.all()
+    serializer_class = PlaylistSerializer

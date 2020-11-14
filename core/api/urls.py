@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from .views import (
     UserIDView,
     ItemListView,
@@ -16,9 +16,14 @@ from .views import (
     OrderItemDeleteView,
     PaymentListView,
     UserDetailsView,
+    PlaylistViewSet,
 )
+from rest_framework.routers import DefaultRouter
+router = DefaultRouter()
+router.register('playlist', PlaylistViewSet)
 
 urlpatterns = [
+    path('', include(router.urls)),
     path('user-id/', UserIDView.as_view(), name='user-id'),
     path('userdetails/', UserDetailsView.as_view(), name='userdetails'),
     path('countries/', CountryListView.as_view(), name='country-list'),
